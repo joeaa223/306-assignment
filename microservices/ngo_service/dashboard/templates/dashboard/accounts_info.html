@@ -1,0 +1,233 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}RBAC Architecture - Service Day Dashboard{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto space-y-8 animate-fade-in pb-12">
+    <!-- Header -->
+    <div class="text-center space-y-2 mb-10">
+        <h1 class="text-4xl font-black text-slate-900 tracking-tight">RBAC Architecture Overview</h1>
+        <p class="text-slate-500 font-medium">Role-Based Access Control implemented via Django Groups (Lab 6)</p>
+    </div>
+
+    <!-- Security Note -->
+    <div class="bg-emerald-50 border border-emerald-100 p-6 rounded-3xl flex items-start gap-4">
+        <div class="p-2 bg-emerald-100 rounded-xl text-emerald-600 shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+        </div>
+        <div>
+            <h3 class="text-emerald-800 font-bold">Enterprise Security Standard</h3>
+            <p class="text-emerald-700/80 text-sm font-medium leading-relaxed">
+                Passwords are <strong>never hardcoded</strong> in source code. All credentials are securely stored in
+                the database
+                (<code class="bg-emerald-100 px-1 rounded">auth_user</code> table) with automatic
+                <strong>hashing</strong>.
+                Authentication is handled dynamically via Django's <code
+                    class="bg-emerald-100 px-1 rounded">authenticate()</code> function,
+                which compares user input against the hashed password at runtime.
+            </p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Admin Role Card -->
+        <div
+            class="group relative bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden hover:scale-[1.02] transition-all duration-300">
+            <div
+                class="absolute top-0 right-0 w-24 h-24 bg-red-50 rounded-bl-full -mr-12 -mt-12 group-hover:bg-red-100 transition-colors">
+            </div>
+            <div class="relative z-10">
+                <div
+                    class="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-red-100">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                </div>
+                <h2 class="text-lg font-black text-slate-900">Administrator</h2>
+                <p class="text-slate-400 text-[11px] font-bold uppercase tracking-wider mb-4">Django Group: Admin</p>
+
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 mb-3">
+                    <label class="block text-[9px] uppercase font-bold text-slate-400 tracking-widest mb-0.5">Test
+                        Username</label>
+                    <p class="text-slate-800 font-bold text-sm select-all">adminuser</p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                    <label
+                        class="block text-[9px] uppercase font-bold text-slate-400 tracking-widest mb-0.5">Password</label>
+                    <p class="text-slate-400 font-medium text-xs italic">Stored as hash in database</p>
+                </div>
+
+                <div class="mt-6 space-y-2">
+                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Permissions</p>
+                    <ul class="space-y-1 text-xs text-slate-600 font-medium">
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-red-500"></span>Create
+                            / Edit / Delete Activities</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-red-500"></span>Toggle
+                            Activity Status</li>
+                        <li class="flex items-center gap-2"><span
+                                class="w-1 h-1 rounded-full bg-red-500"></span>Broadcast Notifications</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-red-500"></span>Monitor
+                            Participation</li>
+                    </ul>
+                </div>
+                <div class="mt-4 flex items-center gap-1.5 text-red-600 font-black text-[9px] uppercase">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span> FULL SYSTEM CONTROL
+                </div>
+            </div>
+        </div>
+
+        <!-- Manager Role Card -->
+        <div
+            class="group relative bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden hover:scale-[1.02] transition-all duration-300">
+            <div
+                class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-12 -mt-12 group-hover:bg-blue-100 transition-colors">
+            </div>
+            <div class="relative z-10">
+                <div
+                    class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-100">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                </div>
+                <h2 class="text-lg font-black text-slate-900">NGO Manager</h2>
+                <p class="text-slate-400 text-[11px] font-bold uppercase tracking-wider mb-4">Django Group: Manager</p>
+
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 mb-3">
+                    <label class="block text-[9px] uppercase font-bold text-slate-400 tracking-widest mb-0.5">Test
+                        Username</label>
+                    <p class="text-slate-800 font-bold text-sm select-all">manageruser</p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                    <label
+                        class="block text-[9px] uppercase font-bold text-slate-400 tracking-widest mb-0.5">Password</label>
+                    <p class="text-slate-400 font-medium text-xs italic">Stored as hash in database</p>
+                </div>
+
+                <div class="mt-6 space-y-2">
+                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Permissions</p>
+                    <ul class="space-y-1 text-xs text-slate-600 font-medium">
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-blue-500"></span>Manage
+                            NGO Activities</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-blue-500"></span>View
+                            Participation Data</li>
+                        <li class="flex items-center gap-2"><span
+                                class="w-1 h-1 rounded-full bg-blue-500"></span>Coordinate with Admins</li>
+                    </ul>
+                </div>
+                <div class="mt-4 flex items-center gap-1.5 text-blue-600 font-black text-[9px] uppercase">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> ACTIVITY MANAGEMENT
+                </div>
+            </div>
+        </div>
+
+        <!-- Employee Role Card -->
+        <div
+            class="group relative bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden hover:scale-[1.02] transition-all duration-300">
+            <div
+                class="absolute top-0 right-0 w-24 h-24 bg-emerald-50 rounded-bl-full -mr-12 -mt-12 group-hover:bg-emerald-100 transition-colors">
+            </div>
+            <div class="relative z-10">
+                <div
+                    class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-emerald-100">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                </div>
+                <h2 class="text-lg font-black text-slate-900">Volunteer</h2>
+                <p class="text-slate-400 text-[11px] font-bold uppercase tracking-wider mb-4">Django Group: Employee</p>
+
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 mb-3">
+                    <label class="block text-[9px] uppercase font-bold text-slate-400 tracking-widest mb-0.5">Test
+                        Username</label>
+                    <p class="text-slate-800 font-bold text-sm select-all">employeeuser</p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                    <label
+                        class="block text-[9px] uppercase font-bold text-slate-400 tracking-widest mb-0.5">Password</label>
+                    <p class="text-slate-400 font-medium text-xs italic">Stored as hash in database</p>
+                </div>
+
+                <div class="mt-6 space-y-2">
+                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Permissions</p>
+                    <ul class="space-y-1 text-xs text-slate-600 font-medium">
+                        <li class="flex items-center gap-2"><span
+                                class="w-1 h-1 rounded-full bg-emerald-500"></span>Browse CSR Activities</li>
+                        <li class="flex items-center gap-2"><span
+                                class="w-1 h-1 rounded-full bg-emerald-500"></span>Register for Slots</li>
+                        <li class="flex items-center gap-2"><span
+                                class="w-1 h-1 rounded-full bg-emerald-500"></span>View Personal Schedule</li>
+                        <li class="flex items-center gap-2"><span
+                                class="w-1 h-1 rounded-full bg-emerald-500"></span>Withdraw before Cut-off</li>
+                    </ul>
+                </div>
+                <div class="mt-4 flex items-center gap-1.5 text-emerald-600 font-black text-[9px] uppercase">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> VOLUNTEER PARTICIPATION
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Architecture Explanation -->
+    <div class="bg-slate-900 p-8 rounded-[40px] shadow-2xl shadow-blue-900/10 text-white relative overflow-hidden">
+        <div class="space-y-6 relative z-10">
+            <h3 class="text-2xl font-black tracking-tight">How Authentication Works</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white/5 p-5 rounded-2xl border border-white/10">
+                    <div class="text-blue-400 font-black text-xs uppercase tracking-wider mb-2">Step 1 · Input</div>
+                    <p class="text-slate-300 text-sm font-medium leading-relaxed">
+                        User submits credentials via the login form. Password is read dynamically from
+                        <code
+                            class="text-blue-400 bg-blue-400/10 px-1 rounded text-xs">request.POST.get("password")</code>
+                    </p>
+                </div>
+                <div class="bg-white/5 p-5 rounded-2xl border border-white/10">
+                    <div class="text-emerald-400 font-black text-xs uppercase tracking-wider mb-2">Step 2 · Verify</div>
+                    <p class="text-slate-300 text-sm font-medium leading-relaxed">
+                        <code class="text-emerald-400 bg-emerald-400/10 px-1 rounded text-xs">authenticate()</code>
+                        compares the input against the <strong>hashed password</strong> stored in the
+                        <code class="text-emerald-400 bg-emerald-400/10 px-1 rounded text-xs">auth_user</code> table.
+                    </p>
+                </div>
+                <div class="bg-white/5 p-5 rounded-2xl border border-white/10">
+                    <div class="text-amber-400 font-black text-xs uppercase tracking-wider mb-2">Step 3 · Redirect</div>
+                    <p class="text-slate-300 text-sm font-medium leading-relaxed">
+                        <code class="text-amber-400 bg-amber-400/10 px-1 rounded text-xs">AccountService</code> checks
+                        the user's
+                        <strong>Django Group</strong> and redirects to the appropriate role-based dashboard.
+                    </p>
+                </div>
+            </div>
+            <div class="flex justify-center pt-2">
+                <a href="{% url 'login' %}"
+                    class="bg-blue-600 text-white px-10 py-4 rounded-2xl font-black text-sm hover:bg-blue-700 transition active:scale-95 shadow-xl shadow-blue-500/20">
+                    Proceed to Login Page
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+</style>
+{% endblock %}

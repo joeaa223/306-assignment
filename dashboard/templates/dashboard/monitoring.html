@@ -1,0 +1,68 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Admin Monitoring{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto py-10 px-4">
+    <div class="mb-8">
+        <h1 class="text-2xl font-bold text-slate-900">System Monitoring</h1>
+        <p class="text-slate-500">Overall Utilization: <strong>{{ overall_stats.utilization_percentage }}%</strong></p>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+        <div class="p-6 bg-blue-50 rounded-xl">
+            <p class="text-sm font-bold uppercase text-blue-600">Total Slots</p>
+            <p class="text-3xl font-black text-blue-900">{{ overall_stats.total_slots }}</p>
+        </div>
+        <div class="p-6 bg-emerald-50 rounded-xl">
+            <p class="text-sm font-bold uppercase text-emerald-600">Filled Slots</p>
+            <p class="text-3xl font-black text-emerald-900">{{ overall_stats.taken_slots }}</p>
+        </div>
+        <div class="p-6 bg-amber-50 rounded-xl">
+            <p class="text-sm font-bold uppercase text-amber-600">Available Slots</p>
+            <p class="text-3xl font-black text-amber-900">{{ overall_stats.remaining_slots }}</p>
+        </div>
+    </div>
+
+    <!-- Activity Table -->
+    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <table class="w-full text-left">
+            <thead class="bg-slate-50 border-b border-slate-200">
+                <tr>
+                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">NGO Name</th>
+                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Location</th>
+                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Status</th>
+                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-right">Participants</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+                {% for item in activity_data %}
+                <tr class="hover:bg-slate-50/50 transition">
+                    <td class="px-6 py-4">
+                        <p class="font-bold text-slate-900">{{ item.activity.ngo_name }}</p>
+                        <p class="text-xs text-slate-400">{{ item.activity.description|truncatechars:50 }}</p>
+                    </td>
+                    <td class="px-6 py-4 text-sm text-slate-600">{{ item.activity.location }}</td>
+                    <td class="px-6 py-4">
+                        {% if item.activity.is_active %}
+                        <span class="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">Active</span>
+                        {% else %}
+                        <span class="px-2 py-1 bg-slate-100 text-slate-500 text-xs font-bold rounded">Inactive</span>
+                        {% endif %}
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <span class="font-black text-slate-900">{{ item.participant_count }}</span>
+                        <span class="text-slate-400"> / {{ item.activity.max_employees }}</span>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="px-6 py-12 text-center text-slate-400">No activities recorded.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

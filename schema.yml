@@ -1,0 +1,7 @@
+openapi: 3.0.3
+info:
+  title: Service Day Dashboard API
+  version: 1.0.0
+  description: RESTful API for NGO Activity Management and Employee Registration
+paths: {}
+components: {}

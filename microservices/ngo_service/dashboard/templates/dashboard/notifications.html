@@ -1,0 +1,224 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto space-y-8 animate-fade-in">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Notifications & Reminders</h1>
+            <p class="text-gray-500 mt-1">Manage automated schedules and broadcast urgent messages to employees and
+                NGOs.</p>
+        </div>
+        <div
+            class="flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full text-sm font-medium border border-blue-100">
+            <span class="relative flex h-2 w-2">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            System Status: Active
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Section 1: Schedule Reminders -->
+        <div class="lg:col-span-1 space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2 bg-indigo-50 rounded-lg text-indigo-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="Path d=" M12 8v4l3
+                                3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">Automated Schedules</h2>
+                </div>
+
+                <form class="space-y-4">
+                    <div class="space-y-3">
+                        <label
+                            class="flex items-start gap-3 p-3 rounded-xl border border-gray-100 hover:bg-gray-50 transition cursor-pointer group">
+                            <input type="checkbox" checked
+                                class="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                            <div>
+                                <span class="block text-sm font-semibold text-gray-700 group-hover:text-blue-600">1 Week
+                                    Before</span>
+                                <span class="text-xs text-gray-400">First engagement reminder</span>
+                            </div>
+                        </label>
+                        <label
+                            class="flex items-start gap-3 p-3 rounded-xl border border-gray-100 hover:bg-gray-50 transition cursor-pointer group">
+                            <input type="checkbox" checked
+                                class="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                            <div>
+                                <span class="block text-sm font-semibold text-gray-700 group-hover:text-blue-600">3 Days
+                                    Before</span>
+                                <span class="text-xs text-gray-400">Logistics & Gear confirmation</span>
+                            </div>
+                        </label>
+                        <label
+                            class="flex items-start gap-3 p-3 rounded-xl border border-gray-100 hover:bg-gray-50 transition cursor-pointer group">
+                            <input type="checkbox" checked
+                                class="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                            <div>
+                                <span class="block text-sm font-semibold text-gray-700 group-hover:text-blue-600">1 Day
+                                    Before</span>
+                                <span class="text-xs text-gray-400">Final attendance check</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="pt-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Reminder Template</label>
+                        <select
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 focus:ring-2 focus:ring-blue-500 outline-none transition">
+                            <option>Standard Corporate Style</option>
+                            <option>Urgent / Action Required</option>
+                            <option>Friendly NGO Update</option>
+                        </select>
+                    </div>
+
+                    <button type="button"
+                        class="w-full mt-4 bg-gray-900 text-white font-bold py-3 rounded-xl hover:bg-black transition shadow-lg shadow-gray-200">
+                        Save Schedule
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Section 2: Broadcast Messages -->
+        <div class="lg:col-span-2 space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="p-2 bg-orange-50 rounded-lg text-orange-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.167H3.382a.75.75 0 01-.444-1.342l4.13-2.903l-4.13-2.903A.75.75 0 013.382 5.17h1.69l2.147-6.167A1.76 1.76 0 0111 5.882zM15 9.75a2.25 2.25 0 110 4.5m3.75-6.75a6.75 6.75 0 110 13.5" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">Broadcast Message</h2>
+                </div>
+
+                <form class="space-y-6" method="POST">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Target Audience</label>
+                            <div class="flex gap-2">
+                                <button type="button"
+                                    class="flex-1 py-2 px-3 rounded-lg border-2 border-blue-600 bg-blue-50 text-blue-700 text-sm font-bold transition">All
+                                    Employees</button>
+                                <button type="button"
+                                    class="flex-1 py-2 px-3 rounded-lg border-2 border-gray-100 text-gray-400 text-sm font-semibold hover:border-gray-200 transition">Assigned
+                                    NGOs</button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Priority Level</label>
+                            <select
+                                class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-gray-700 focus:ring-2 focus:ring-orange-500 outline-none transition">
+                                <option>Normal - Information</option>
+                                <option class="text-orange-600 font-bold">Medium - Important Update</option>
+                                <option class="text-red-600 font-bold">High - Urgent Action</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                        <input type="text" name="title" required placeholder="e.g., Update regarding Service Day logistics"
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Message Body</label>
+                        <textarea name="content" required rows="5" placeholder="Write your announcement here..."
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition resize-none"></textarea>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-50">
+                        <p class="text-xs text-gray-400 flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Message will be sent via Email & In-app Notification
+                        </p>
+                        <button type="submit"
+                            class="bg-blue-600 text-white font-bold py-3 px-10 rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-100 flex items-center gap-2">
+                            Send Broadcast
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Recent Notifications -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="p-6 border-b border-gray-50 flex justify-between items-center">
+                    <h3 class="font-bold text-gray-800">Recent Broadcast History</h3>
+                    <a href="#" class="text-sm text-blue-600 font-semibold hover:underline">View All</a>
+                </div>
+                <div class="divide-y divide-gray-50">
+                    <div class="p-4 hover:bg-gray-50 transition flex items-center gap-4">
+                        <div class="p-2 bg-green-50 rounded-full text-green-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-sm font-bold text-gray-800">Successful Registration - Red Cross</h4>
+                            <p class="text-xs text-gray-400">Sent to 42 employees • Today, 10:15 AM</p>
+                        </div>
+                        <span class="text-xs font-medium text-gray-400">Delivered</span>
+                    </div>
+                    <div class="p-4 hover:bg-gray-50 transition flex items-center gap-4">
+                        <div class="p-2 bg-blue-50 rounded-full text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-sm font-bold text-gray-800">Reminder: 3 Days Until Beach Cleanup</h4>
+                            <p class="text-xs text-gray-400">Sent to 12 employees • Yesterday, 09:00 AM</p>
+                        </div>
+                        <span class="text-xs font-medium text-gray-400">Delivered</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+</style>
+{% endblock %}

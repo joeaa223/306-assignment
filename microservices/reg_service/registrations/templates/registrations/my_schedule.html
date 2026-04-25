@@ -1,0 +1,101 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}My Schedule - Service Day Dashboard{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto space-y-8 animate-fade-in">
+    <!-- Header Section -->
+    <div>
+        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">My Participation Schedule</h1>
+        <p class="text-slate-500 mt-1">Manage your registered CSR activities and deadlines</p>
+    </div>
+
+    <!-- Registry Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for reg in registrations %}
+        <div
+            class="bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/40 border border-slate-100 flex flex-col justify-between hover:scale-[1.01] transition duration-300">
+            <div>
+                <div class="flex items-center justify-between mb-4">
+                    <span
+                        class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold uppercase tracking-wider">Confirmed</span>
+                    <span class="text-xs text-slate-400 font-medium whitespace-nowrap">Joined {{
+                        reg.registered_at|date:"M d" }}</span>
+                </div>
+
+                <a href="{% url 'activity_detail' reg.activity.id %}" class="block group/title">
+                    <h3
+                        class="text-xl font-black text-slate-900 mb-2 truncate group-hover/title:text-blue-600 transition-colors">
+                        {{ reg.activity.ngo_name }}
+                    </h3>
+                </a>
+                <div class="space-y-3 mb-6">
+                    <div class="flex items-center gap-2 text-slate-600 font-semibold text-sm">
+                        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        {{ reg.activity.date_time|date:"l, M d • H:i" }}
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-400 font-medium text-xs">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        {{ reg.activity.location }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-50 flex items-center justify-between">
+                <div>
+                    <p class="text-xs text-slate-400 font-bold uppercase">Withdraw Deadline</p>
+                    <p class="text-sm font-bold text-red-500">{{ reg.activity.cut_off_date|date:"M d, H:i" }}</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <a href="{% url 'virtual_scan' reg.activity.id %}"
+                        class="p-2 text-slate-400 hover:text-blue-500 hover:bg-blue-50 rounded-xl transition"
+                        title="Simulate Scan QR Check-in">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                        </svg>
+                    </a>
+                    <form action="{% url 'withdraw_activity' reg.activity.id %}" method="POST" class="m-0">
+                        {% csrf_token %}
+                        <button type="submit"
+                            class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-xl transition"
+                            title="Withdraw">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div
+            class="col-span-full py-24 bg-white rounded-3xl border border-dashed border-slate-200 flex flex-col items-center justify-center space-y-4">
+            <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center text-slate-300">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <div class="text-center">
+                <p class="text-slate-900 font-black text-xl">Your schedule is empty</p>
+                <p class="text-slate-500 font-medium mt-1">Ready to make an impact? Browse activities and join one!</p>
+            </div>
+            <a href="{% url 'ngo_list' %}"
+                class="bg-blue-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-blue-700 transition">Browse
+                Activities</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

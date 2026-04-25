@@ -1,0 +1,79 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}QR Code Generator - Service Day Dashboard{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto py-12 animate-fade-in">
+    <div
+        class="bg-white rounded-[2.5rem] p-10 shadow-2xl shadow-blue-100 border border-slate-100 text-center relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div class="absolute -top-24 -right-24 w-48 h-48 bg-blue-50 rounded-full blur-3xl opacity-50"></div>
+
+        <div class="relative z-10">
+            <div
+                class="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-xs font-bold mb-6">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                </svg>
+                Administrator Tools
+            </div>
+
+            <h1 class="text-3xl font-black text-slate-900 mb-2 truncate">{{ activity.ngo_name }}</h1>
+            <p class="text-slate-500 font-medium mb-10">Display this QR code for employees to check-in on-site</p>
+
+            <!-- QR Code Placeholder -->
+            <div
+                class="bg-slate-50 rounded-[2rem] p-12 mb-10 inline-block border-2 border-dashed border-blue-200 group hover:border-blue-400 transition-colors cursor-default">
+                <div class="bg-white p-4 rounded-xl shadow-lg shadow-blue-50">
+                    <!-- Static QR Code Mockup (No API) -->
+                    <div
+                        class="w-64 h-64 mx-auto bg-slate-100 rounded-lg flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                        <!-- Stylized QR Mock -->
+                        <div class="grid grid-cols-4 gap-2 w-48 h-48 opacity-20">
+                            {% for i in "1234567890123456" %}
+                            <div class="bg-slate-400 rounded-sm"></div>
+                            {% endfor %}
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center p-8">
+                            <svg class="w-full h-full text-blue-600 opacity-80" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-4 text-[10px] font-bold text-blue-400 uppercase tracking-widest">Unique ID: CSR-ACT-{{
+                    activity.pk }}</p>
+            </div>
+
+            <div class="flex justify-center">
+                <a href="{% url 'monitoring' %}"
+                    class="w-full max-w-xs bg-slate-900 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-slate-800 transition shadow-lg shadow-slate-200">
+                    Back to Dashboard
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+</style>
+{% endblock %}

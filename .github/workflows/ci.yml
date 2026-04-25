@@ -1,0 +1,33 @@
+# Lab 12 & 13: CI Pipeline for Testing and Deployment Checks
+name: Django CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python 3.13.1
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13.1'
+        
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Run System Checks (Lab 13 Task 4.2)
+      run: |
+        python manage.py check
+        
+    - name: Run Tests (Lab 12 Task 4.5)
+      run: |
+        python manage.py test

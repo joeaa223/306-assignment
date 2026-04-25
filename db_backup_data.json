@@ -1,0 +1,655 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-02-28T11:19:25.912Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "Admin",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-02-28T11:19:35.414Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "Manager",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-02-28T11:19:43.589Z",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "3",
+        "object_repr": "Employee",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-02-28T11:20:21.099Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "3",
+        "object_repr": "adminuser",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-02-28T11:20:48.559Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "3",
+        "object_repr": "adminuser",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-02-28T11:21:44.302Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "4",
+        "object_repr": "manageruser",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-02-28T11:22:04.517Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "4",
+        "object_repr": "manageruser",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-02-28T11:22:31.626Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "5",
+        "object_repr": "employeeuser",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-02-28T11:22:38.822Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "5",
+        "object_repr": "employeeuser",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": 1,
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": 2,
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 3,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 3,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 3,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": 3,
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 4,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 4,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 4,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view user",
+        "content_type": 4,
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 5,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 5,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 5,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": 5,
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 6,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 6,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 6,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view session",
+        "content_type": 6,
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add ngo activity",
+        "content_type": 7,
+        "codename": "add_ngoactivity"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change ngo activity",
+        "content_type": 7,
+        "codename": "change_ngoactivity"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete ngo activity",
+        "content_type": 7,
+        "codename": "delete_ngoactivity"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view ngo activity",
+        "content_type": 7,
+        "codename": "view_ngoactivity"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add registration",
+        "content_type": 8,
+        "codename": "add_registration"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change registration",
+        "content_type": 8,
+        "codename": "change_registration"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete registration",
+        "content_type": 8,
+        "codename": "delete_registration"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view registration",
+        "content_type": 8,
+        "codename": "view_registration"
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+        "name": "Admin",
+        "permissions": []
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+        "name": "Manager",
+        "permissions": []
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+        "name": "Employee",
+        "permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Pi8sLyJhSm56ZfT3VQtVsd$a07UN4Nvy0/jSNCe+bR9jJPb+BbdvQCVVWTnnziB5E0=",
+        "last_login": "2026-03-01T05:26:43.361Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "kaih92224@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-01-30T15:41:15.573Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$jJD0nojavmk6CRUBRuaesd$rgSBBtFRGPyp939XA8BuLBFEP9zefVldbRMmyucMAOI=",
+        "last_login": "2026-02-28T11:05:34.773Z",
+        "is_superuser": false,
+        "username": "employee",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-02-28T11:01:26.207Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$1LupbyvoWtcsKZbGazpZfU$EkukBBjC6EleTuz68rrQreHAPdTWmau0xhQipy0yS54=",
+        "last_login": "2026-02-28T14:21:29.318Z",
+        "is_superuser": false,
+        "username": "adminuser",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-02-28T11:20:20Z",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$ByRwc57L4RvAMMSCffa0t8$m+eAyc4fUhju0N7rvky6MrzwSaYhj+A7f2XVsjNsqKI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "manageruser",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-02-28T11:21:43Z",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$6lekegxSBow8MeSCmsUqkO$CEvV8iTuqqso/2+ntFVp0/lNfOj3nmpjAGbehX8c1+U=",
+        "last_login": "2026-03-01T04:14:39.700Z",
+        "is_superuser": false,
+        "username": "employeeuser",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-02-28T11:22:30Z",
+        "groups": [
+            3
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "dashboard",
+        "model": "ngoactivity"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "registrations",
+        "model": "registration"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "e7khohldzd692wcwq01tqagbv0sc3c59",
+    "fields": {
+        "session_data": ".eJxVjMsOgjAUBf-la9NISynXpXu-obkvBDVtQmFl_HclYaHbMzPnZRJu65S2qkuaxVxMY06_GyE_NO9A7phvxXLJ6zKT3RV70GqHIvq8Hu7fwYR1-tY9UwSWXqnR1oOywOh8BIgQ1DvumLziCK1yRCeKXQhAjXdyHpk6Me8PCog5Dg:1vlqiD:kGbKmZvWUkycB1D5ZmLvoZTrtHVXV2AdCAhbGtPZIYc",
+        "expire_date": "2026-02-13T15:47:09.745Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "mag5ssorti1xkadvxyyl9v2nsqbz2q32",
+    "fields": {
+        "session_data": ".eJxVjMsOgjAUBf-la9NISynXpXu-obkvBDVtQmFl_HclYaHbMzPnZRJu65S2qkuaxVxMY06_GyE_NO9A7phvxXLJ6zKT3RV70GqHIvq8Hu7fwYR1-tY9UwSWXqnR1oOywOh8BIgQ1DvumLziCK1yRCeKXQhAjXdyHpk6Me8PCog5Dg:1vrwFT:eZIoVDo3Mhc9GYwZyOEuh2YtonzsicnGcAecqbiZP0s",
+        "expire_date": "2026-03-02T10:54:39.005Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "q6spyeqrfc7k7i7hqx14v69xt60wi7vk",
+    "fields": {
+        "session_data": ".eJxVjMsOgjAUBf-la9NISynXpXu-obkvBDVtQmFl_HclYaHbMzPnZRJu65S2qkuaxVxMY06_GyE_NO9A7phvxXLJ6zKT3RV70GqHIvq8Hu7fwYR1-tY9UwSWXqnR1oOywOh8BIgQ1DvumLziCK1yRCeKXQhAjXdyHpk6Me8PCog5Dg:1vw05u:6RDolLKDMAwDbyGXoVPdB5vf4EEW45nN5d9_Jby9iKM",
+        "expire_date": "2026-03-13T15:49:34.419Z"
+    }
+},
+{
+    "model": "dashboard.ngoactivity",
+    "pk": 1,
+    "fields": {
+        "ngo_name": "MERCY Malaysia",
+        "description": "Save the Children is an international non-governmental organization (NGO) that works to protect children’s rights and improve their well-being. The organization focuses on providing access to education, healthcare, nutrition, and emergency relief, especially for children living in poverty, conflict zones, or areas affected by disasters. Save the Children also collaborates with governments, communities, and corporate partners to create sustainable programs that ensure children can survive, learn, and be protected.",
+        "location": "Subang 2",
+        "service_type": "go orphanage to help them",
+        "date_time": "2026-04-02T14:50:00Z",
+        "max_employees": 30,
+        "current_slots_taken": 0,
+        "cut_off_date": "2026-03-27T14:50:00Z",
+        "is_active": true
+    }
+},
+{
+    "model": "dashboard.ngoactivity",
+    "pk": 3,
+    "fields": {
+        "ngo_name": "WWF Malaysia",
+        "description": "WWF Malaysia focuses on protecting wildlife, forests, and marine ecosystems. The organization promotes sustainable environmental practices and raises awareness about climate change and biodiversity conservation.",
+        "location": "Sabah",
+        "service_type": "nature protection",
+        "date_time": "2026-06-28T10:00:00Z",
+        "max_employees": 20,
+        "current_slots_taken": 1,
+        "cut_off_date": "2026-05-28T10:00:00Z",
+        "is_active": true
+    }
+},
+{
+    "model": "registrations.registration",
+    "pk": 1,
+    "fields": {
+        "user": 5,
+        "activity": 3,
+        "registered_at": "2026-03-01T04:27:09.761Z",
+        "status": "REGISTERED"
+    }
+}
+]
